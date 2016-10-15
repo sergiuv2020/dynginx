@@ -3,6 +3,6 @@ FROM nginx
 MAINTAINER Sergiu Vidrascu vsergiu@hotmail.com
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY startnginx.sh /startnginx.sh
+COPY startnginx.sh /etc/nginx/
 
-ENTRYPOINT ["/startnginx.sh"]
+ENTRYPOINT ["/etc/nginx/startnginx.sh"]
