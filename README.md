@@ -8,6 +8,7 @@ The upstream config is entirely at you disposal however for now the location is 
 
 Build the image then you can use it in docker-compose as follows:
 
+```bash
 loadbalancer:
   image: dynginx
   environment:
@@ -16,7 +17,7 @@ loadbalancer:
     SERVICE_2: "location2:server upstream:9122/server upstream2:9122"
   ports:
     - '80:80'
-
+```
 
 this will generate the following nginx config:
 
@@ -64,7 +65,7 @@ http {
 
        		}
 
-       		upstream upstreamalfresco {
+       		upstream upstreamlocation1 {
        			server upstream:9999;
        		}
 
@@ -76,6 +77,7 @@ http {
 
 }
 ```
+
 O course you'll also have to make sure you can connect to the upstreams also.
 
 
@@ -86,4 +88,4 @@ The container can take up to 5 services specified independently but it can take 
 
 Also make sure that every upstream line is divided by "/"
 
-Enjoy :)
+## Enjoy :)
