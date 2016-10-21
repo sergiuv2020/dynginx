@@ -7,7 +7,7 @@ IFS=',' read -r -a array <<< "$FULLENV"
 for i in "${array[@]}"
 do
    path=$(sed -e "s/:.*//g" <<< "$i")
-   locations="$locations\n\t\t\tlocation /$path {\n\t\t\t\tproxy_pass http://upstream$path/$path;\n\t\t\t\tproxy_set_header Host \$host;\n\t\t\t\tproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;\n\t\t\t\tproxy_set_header X-Forwarded-Server \$host;\n\t\t\t\tproxy_set_header X-Real-IP \$remote_addr;\n\t\t\t\tproxy_set_header X-Forwarded-Port \$proxy_port;\n\t\t\t}\n"
+   locations="$locations\n\t\t\tlocation /$path {\n\t\t\t\tproxy_pass http://upstream$path/$path;\n\t\t\t\tproxy_set_header Host \$host;\n\t\t\t\tproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;\n\t\t\t\tproxy_set_header X-Real-IP \$remote_addr;\n\t\t\t\tproxy_set_header X-Forwarded-Proto \$scheme;\n\t\t\t}\n"
    i=$(sed -e "s/$path://g" <<< "$i")
    IFS='/' read -r -a backends <<< "$i"
    for i in "${backends[@]}"
