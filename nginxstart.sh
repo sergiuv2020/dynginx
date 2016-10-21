@@ -20,7 +20,7 @@ done
 locations="\t\t$locations\n\t\t}\n"
 upstreams="\t\t$upstreams\n}"
 sed -ie "s/listen.*/listen $NGINX_PORT;/g" /etc/nginx/nginx.conf
-sed -ie "s/rewrite.*/rewrite ^\/$ /$NGINX_REWRITE_PATH;/g" /etc/nginx/nginx.conf
+sed -ie "s/NGINX_REWRITE_PATH/$NGINX_REWRITE_PATH/g" /etc/nginx/nginx.conf
 echo -en $locations >> /etc/nginx/nginx.conf
 echo -en $upstreams >> /etc/nginx/nginx.conf
 
